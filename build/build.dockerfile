@@ -21,5 +21,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=build-server /app/publish .
 COPY --from=build-client /app/publish ./wwwroot/
-ENV RUNSINDOCKER=true
 ENTRYPOINT dotnet TimeSheet.dll

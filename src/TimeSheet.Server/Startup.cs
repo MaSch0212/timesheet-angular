@@ -1,24 +1,17 @@
-using System;
-using System.Data;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using LettuceEncrypt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.AspNetCore.SpaServices.StaticFiles;
-using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using TimeSheet.Common;
 using TimeSheet.Repositories;
 using TimeSheet.Services;
@@ -49,7 +42,6 @@ namespace TimeSheet
                 };
             });
 
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddControllers();
 
             // In production, the Angular files will be served from this directory
@@ -57,13 +49,6 @@ namespace TimeSheet
             {
                 configuration.RootPath = "wwwroot";
             });
-
-            var lettuceEncrypt = services.AddLettuceEncrypt();
-            if (Configuration["RUNSINDOCKER"] == "true")
-            {
-                var password = Configuration["PFXPASSWORD"] ?? "49FA0232-5C83-4048-A4EF-B9CF10536B52";
-                lettuceEncrypt.PersistDataToDirectory(new DirectoryInfo("/data/letsencrypt"), password);
-            }
 
             services.AddSingleton<IDatabaseService, DatabaseService>();
 
@@ -132,12 +117,18 @@ namespace TimeSheet
             {
                 app.Use(async (context, next) =>
                 {
-                    if (context.Request.Path == "/" || context.Request.Path == "/index.html")
-                    {
-                        var staticFileProvider = context.RequestServices.GetService<ISpaStaticFileProvider>();
-                        var fileInfo = staticFileProvider.FileProvider.GetFileInfo("index.html");
+                    var body = context.Response.Body;
+                    using var newBody = new MemoryStream();
+                    context.Response.Body = newBody;
 
-                        var html = File.ReadAllText(fileInfo.PhysicalPath);
+                    await next();
+
+                    context.Response.Body = body;
+                    newBody.Seek(0, SeekOrigin.Begin);
+                    if (context.Response.ContentType == "text/html")
+                    {
+                        using var streamReader = new StreamReader(newBody);
+                        var html = await streamReader.ReadToEndAsync();
                         var baseTagMatch = Regex.Match(html, @"<base href=""(?<PathBase>[^""]+)""\s*\/?>");
                         if (baseTagMatch.Success)
                         {
@@ -145,13 +136,15 @@ namespace TimeSheet
                             html = string.Concat(html[..pathBaseGroup.Index], context.Request.PathBase.Value.TrimEnd('/') + "/", html[(pathBaseGroup.Index + pathBaseGroup.Value.Length)..]);
                         }
 
-                        context.Response.ContentType = "text/html";
-                        await using var sw = new StreamWriter(context.Response.Body);
-                        await sw.WriteAsync(html);
+                        context.Response.ContentLength = null;
+                        await using (var sw = new StreamWriter(context.Response.Body))
+                        {
+                            await sw.WriteAsync(html);
+                        }
                     }
                     else
                     {
-                        await next();
+                        await newBody.CopyToAsync(context.Response.Body);
                     }
                 });
                 app.UseSpaStaticFiles();
