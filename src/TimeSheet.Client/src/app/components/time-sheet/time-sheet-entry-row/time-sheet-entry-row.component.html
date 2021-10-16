@@ -1,0 +1,39 @@
+<mat-expansion-panel [class.first]="isFirst" [class.last]="isLast" #panel>
+    <mat-expansion-panel-header>
+        <masch-time-sheet-entry
+            class="w-100"
+            [entry]="entry"
+        ></masch-time-sheet-entry>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+        <masch-time-sheet-entry-form
+            [entry]="entry"
+            (save)="save.emit($event)"
+            (delete)="delete.emit()"
+            #form
+        >
+            <mat-action-row actions class="pb-0 pl-0 align-items-center mt-3">
+                <div class="col">
+                    <mat-error>{{ form.errorMessage }}</mat-error>
+                </div>
+                <button
+                    class="col-auto"
+                    mat-button
+                    color="warn"
+                    (click)="form.onDelete()"
+                    type="button"
+                >
+                    Delete
+                </button>
+                <button
+                    class="col-auto"
+                    mat-button
+                    color="primary"
+                    type="submit"
+                >
+                    Save
+                </button>
+            </mat-action-row>
+        </masch-time-sheet-entry-form>
+    </ng-template>
+</mat-expansion-panel>

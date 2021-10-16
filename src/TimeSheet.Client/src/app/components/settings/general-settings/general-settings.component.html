@@ -1,0 +1,84 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="container">
+        <div class="row">
+            <mat-form-field class="col-12 col-sm-6">
+                <input
+                    matInput
+                    type="number"
+                    placeholder="Work day hours"
+                    ngModel
+                    name="workDayHours"
+                    required
+                    min="0"
+                    max="24"
+                    step=".25"
+                />
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="col-12 col-sm-6">
+                <input
+                    matInput
+                    type="time"
+                    placeholder="Default start time"
+                    ngModel
+                    name="defaultStart"
+                />
+            </mat-form-field>
+            <mat-form-field class="col-12 col-sm-6">
+                <input
+                    matInput
+                    type="time"
+                    placeholder="Default end time"
+                    ngModel
+                    name="defaultEnd"
+                />
+            </mat-form-field>
+        </div>
+
+        <mat-checkbox ngModel name="insertDefaultBreak" #insertDefaultBreak
+            >Insert Default Break</mat-checkbox
+        >
+
+        <div
+            class="row justify-content-end ml-2"
+            [hidden]="!insertDefaultBreak.checked"
+        >
+            <mat-form-field class="col-12 col-sm-6">
+                <input
+                    matInput
+                    type="time"
+                    placeholder="Start"
+                    ngModel
+                    name="defaultBreakStart"
+                    [required]="insertDefaultBreak.checked"
+                />
+            </mat-form-field>
+            <mat-form-field class="col-12 col-sm-6">
+                <input
+                    matInput
+                    type="time"
+                    placeholder="End"
+                    ngModel
+                    name="defaultBreakEnd"
+                    [required]="insertDefaultBreak.checked"
+                />
+            </mat-form-field>
+        </div>
+
+        <div class="row justify-content-end align-items-center">
+            <div class="col-auto">
+                <mat-error *ngIf="formInvalid"
+                    >Please fill in all fields correctly.</mat-error
+                >
+                <mat-error *ngIf="saveFailed">Saving changes failed.</mat-error>
+            </div>
+            <div class="col-auto">
+                <button type="submit" mat-raised-button color="primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

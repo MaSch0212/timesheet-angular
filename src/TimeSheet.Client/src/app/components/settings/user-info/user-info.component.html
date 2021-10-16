@@ -1,0 +1,51 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="container">
+        <div class="row">
+            <mat-form-field class="col-12 col-sm-6">
+                <input
+                    matInput
+                    type="text"
+                    placeholder="Given name"
+                    ngModel
+                    name="givenName"
+                    required
+                />
+            </mat-form-field>
+            <mat-form-field class="col-12 col-sm-6">
+                <input
+                    matInput
+                    type="text"
+                    placeholder="Surname"
+                    ngModel
+                    name="surname"
+                    required
+                />
+            </mat-form-field>
+            <mat-form-field class="col-12">
+                <input
+                    matInput
+                    type="email"
+                    placeholder="E-Mail"
+                    ngModel
+                    name="email"
+                    required
+                    email
+                />
+            </mat-form-field>
+        </div>
+
+        <div class="row justify-content-end align-items-center">
+            <div class="col-auto">
+                <mat-error *ngIf="formInvalid"
+                    >Please fill in all fields correctly.</mat-error
+                >
+                <mat-error *ngIf="saveFailed">Saving changes failed.</mat-error>
+            </div>
+            <div class="col-auto">
+                <button type="submit" mat-raised-button color="primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

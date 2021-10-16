@@ -1,0 +1,21 @@
+.mat-expansion-panel.first {
+    border-top-right-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+    margin-top: 0;
+}
+
+.mat-expansion-panel.last {
+    border-bottom-right-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    margin-bottom: 0;
+}
+
+.mat-expansion-panel:not(.first):not(.mat-expanded) {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+
+.mat-expansion-panel:not(.last):not(.mat-expanded) {
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}

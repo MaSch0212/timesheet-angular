@@ -1,0 +1,85 @@
+<form [formGroup]="entryForm" (ngSubmit)="onSubmit()">
+    <div class="row align-items-end">
+        <mat-form-field class="col-6 col-sm-4">
+            <input
+                matInput
+                [matDatepicker]="datepicker"
+                placeholder="Date"
+                formControlName="date"
+            />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="datepicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="col-6 col-sm-2">
+            <input
+                type="number"
+                matInput
+                placeholder="Target hours"
+                formControlName="targetHours"
+            />
+        </mat-form-field>
+        <mat-form-field class="col-6 col-sm-3">
+            <input
+                type="time"
+                matInput
+                placeholder="Start"
+                formControlName="start"
+            />
+        </mat-form-field>
+        <mat-form-field class="col-6 col-sm-3">
+            <input
+                type="time"
+                matInput
+                placeholder="End"
+                formControlName="end"
+            />
+        </mat-form-field>
+    </div>
+    <h4>Breaks</h4>
+    <div formArrayName="breaks">
+        <ng-container *ngFor="let break of getBreakControls(); let i = index">
+            <mat-divider class="mb-2" *ngIf="i > 0"></mat-divider>
+            <div class="row justify-content-end" [formGroupName]="i">
+                <div class="row col-10 m-0">
+                    <mat-form-field class="col-6">
+                        <input
+                            type="time"
+                            matInput
+                            placeholder="Start"
+                            formControlName="start"
+                        />
+                    </mat-form-field>
+                    <mat-form-field class="col-6">
+                        <input
+                            type="time"
+                            matInput
+                            placeholder="End"
+                            formControlName="end"
+                        />
+                    </mat-form-field>
+                </div>
+                <button class="col-1 my-auto" mat-icon-button>
+                    <mat-icon
+                        svgIcon="delete"
+                        color="warn"
+                        (click)="onRemoveBreak(i)"
+                    ></mat-icon>
+                </button>
+            </div>
+        </ng-container>
+        <div class="row justify-content-center">
+            <button
+                type="button"
+                mat-button
+                class="col-auto"
+                (click)="onAddBreak()"
+            >
+                Add break
+            </button>
+        </div>
+    </div>
+    <ng-content select="[actions]"></ng-content>
+</form>

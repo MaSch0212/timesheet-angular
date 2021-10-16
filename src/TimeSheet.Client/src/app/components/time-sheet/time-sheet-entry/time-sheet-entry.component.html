@@ -1,0 +1,18 @@
+<div class="row no-gutters">
+    <div class="col-2 col-sm-1 text-left mw-30px">
+        {{ entry.start | date: 'EEEEEE' }}
+    </div>
+    <div class="col-2 col-sm-1 text-right mw-30px">
+        {{ entry.start | date: 'd' }}
+    </div>
+    <div class="col text-center">
+        {{ entry.start | date: 'HH:mm' }} - {{ entry.end | date: 'HH:mm' }}
+    </div>
+    <div class="col-3 col-sm-2 text-center">{{ entry.workTime | hours }}</div>
+    <div class="hidden-xs col-sm-4 text-center">
+        {{ entry.breaks.length }} break{{
+            entry.breaks.length === 1 ? '' : 's'
+        }}
+        ({{ entry.breakTime | hours }})
+    </div>
+</div>

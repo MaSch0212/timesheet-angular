@@ -1,0 +1,71 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// Plus imports for other components in your app.
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$time-sheet-primary: mat-palette($mat-light-blue, 700, 500, 900);
+$time-sheet-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$time-sheet-warn: mat-palette($mat-deep-orange);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$time-sheet-theme: mat-dark-theme(
+    $time-sheet-primary,
+    $time-sheet-accent,
+    $time-sheet-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($time-sheet-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    margin: 0;
+    width: 100%;
+}
+
+button.mat-menu-item {
+    line-height: 24px !important;
+}
+a.mat-menu-item > mat-icon {
+    margin-bottom: 14px;
+}
+.mat-icon svg {
+    height: 24px;
+    width: 24px;
+    vertical-align: top;
+}
+
+.hidden-xs {
+    @include media-breakpoint-only(xs) {
+        display: none;
+    }
+}
+
+.mat-snack-bar-container.mat-warn {
+    color: mat-color(map-get($time-sheet-theme, warn));
+}
+
+.mat-snack-bar-container {
+    margin-bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+}
