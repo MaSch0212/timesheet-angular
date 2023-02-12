@@ -2,10 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TimeSheetEntry } from '../../../models/time-sheet-entry.model';
 import {
     NgForm,
-    FormGroup,
-    FormControl,
+    UntypedFormGroup,
+    UntypedFormControl,
     Validators,
-    FormArray
+    UntypedFormArray
 } from '@angular/forms';
 import { Helpers } from '../../../common/helpers';
 import { Break } from '../../../models/break.model';
@@ -30,7 +30,7 @@ export class TimeSheetEntryFormComponent implements OnInit {
         this.createForm(this._entry);
     }
 
-    entryForm: FormGroup;
+    entryForm: UntypedFormGroup;
     errorMessage: string;
 
     constructor() {}
@@ -52,15 +52,15 @@ export class TimeSheetEntryFormComponent implements OnInit {
     }
 
     getBreakControls() {
-        return (<FormArray>this.entryForm.get('breaks')).controls;
+        return (<UntypedFormArray>this.entryForm.get('breaks')).controls;
     }
 
     onRemoveBreak(index: number) {
-        (<FormArray>this.entryForm.get('breaks')).removeAt(index);
+        (<UntypedFormArray>this.entryForm.get('breaks')).removeAt(index);
     }
 
     onAddBreak() {
-        (<FormArray>this.entryForm.get('breaks')).push(
+        (<UntypedFormArray>this.entryForm.get('breaks')).push(
             this.createBreakGroup(null)
         );
     }
@@ -98,42 +98,42 @@ export class TimeSheetEntryFormComponent implements OnInit {
     }
 
     private createForm(entry: TimeSheetEntry) {
-        const breaks = new FormArray([]);
+        const breaks = new UntypedFormArray([]);
         if (entry) {
             entry.breaks.forEach(b => {
                 breaks.push(this.createBreakGroup(b));
             });
         }
 
-        this.entryForm = new FormGroup({
-            id: new FormControl(entry ? entry.id : 0),
-            date: new FormControl(
+        this.entryForm = new UntypedFormGroup({
+            id: new UntypedFormControl(entry ? entry.id : 0),
+            date: new UntypedFormControl(
                 entry ? Helpers.getDateString(entry.start) : null,
                 Validators.required
             ),
-            start: new FormControl(
+            start: new UntypedFormControl(
                 entry ? Helpers.getTimeString(entry.start) : null,
                 Validators.required
             ),
-            end: new FormControl(
+            end: new UntypedFormControl(
                 entry && entry.end ? Helpers.getTimeString(entry.end) : null
             ),
             breaks: breaks,
-            targetHours: new FormControl(
+            targetHours: new UntypedFormControl(
                 entry ? entry.targetHours : null,
                 Validators.required
             )
         });
     }
 
-    private createBreakGroup(b: Break): FormGroup {
-        return new FormGroup({
-            id: new FormControl(b ? b.id : 0),
-            start: new FormControl(
+    private createBreakGroup(b: Break): UntypedFormGroup {
+        return new UntypedFormGroup({
+            id: new UntypedFormControl(b ? b.id : 0),
+            start: new UntypedFormControl(
                 b ? Helpers.getTimeString(b.start) : null,
                 Validators.required
             ),
-            end: new FormControl(
+            end: new UntypedFormControl(
                 b && b.end ? Helpers.getTimeString(b.end) : null
             )
         });
