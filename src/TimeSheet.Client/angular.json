@@ -90,14 +90,6 @@
           "options": {
             "browserTarget": "timesheet-client:build"
           }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "jest.config.js",
-            "tsConfig": "tsconfig.spec.json",
-            "setupFile": "src/test-setup.ts"
-          }
         }
       }
     }
