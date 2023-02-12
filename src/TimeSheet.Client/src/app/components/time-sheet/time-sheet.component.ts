@@ -7,8 +7,8 @@ import { List } from 'linqts';
 import { MenuService } from '../../services/menu.service';
 import { first, catchError, map } from 'rxjs/operators';
 import { Observable, fromEvent, of } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import {
     DeleteWarningDialogComponent,
     DeleteWarningDialogData
