@@ -37,7 +37,7 @@ export class AuthenticationService {
             : this.httpClient
                   .get('api/auth/check', { headers: this.httpHeaders })
                   .pipe(
-                      map(() => token),
+                      map(() => true),
                       catchError(() => {
                           this.localStorageService.removeToken();
                           return of(null);

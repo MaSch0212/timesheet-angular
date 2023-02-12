@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiKey } from '../../../models/apikey.model';
 import { SettingsService } from '../../../services/settings.service';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CreateApiKeyDialogComponent } from '../../dialogs/create-api-key-dialog/create-api-key-dialog.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import {

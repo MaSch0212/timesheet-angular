@@ -3,7 +3,7 @@ import { Settings } from '../../../models/settings.model';
 import { NgForm } from '@angular/forms';
 import { Helpers } from '../../../common/helpers';
 import { SettingsService } from '../../../services/settings.service';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'masch-general-settings',

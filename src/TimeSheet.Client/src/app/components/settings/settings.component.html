@@ -9,7 +9,7 @@
     </div>
     <div class="row" *ngIf="settings && userInfo">
         <div class="col-12 mt-3">
-            <mat-card>
+            <mat-card appearance="outlined">
                 <mat-card-title>General Settings</mat-card-title>
                 <mat-card-content>
                     <masch-general-settings
@@ -19,7 +19,7 @@
             </mat-card>
         </div>
         <div class="col-12 mt-3">
-            <mat-card>
+            <mat-card appearance="outlined">
                 <mat-card-title>User Info</mat-card-title>
                 <mat-card-content>
                     <masch-user-info [userInfo]="userInfo"></masch-user-info>
@@ -27,7 +27,7 @@
             </mat-card>
         </div>
         <div class="col-12 mt-3">
-            <mat-card>
+            <mat-card appearance="outlined">
                 <mat-card-title>Change Password</mat-card-title>
                 <mat-card-content>
                     <masch-change-password
@@ -37,7 +37,7 @@
             </mat-card>
         </div>
         <div class="col-12 mt-3">
-            <mat-card>
+            <mat-card appearance="outlined">
                 <mat-card-title>API Keys</mat-card-title>
                 <mat-card-content>
                     <masch-api-keys

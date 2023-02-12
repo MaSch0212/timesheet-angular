@@ -1,89 +1,73 @@
-<form (ngSubmit)="onRegisterSubmit(f)" #f="ngForm">
-    <div class="container">
-        <div class="row" ngModelGroup="userInfo">
-            <mat-form-field class="col-12 col-sm-6">
-                <input
-                    matInput
-                    type="text"
-                    placeholder="Given name"
-                    ngModel
-                    name="givenName"
-                    required
-                />
+<form (ngSubmit)="onRegisterSubmit(f)"
+      #f="ngForm"
+      class="@container mt-4">
+    <div class="grid gap-x-4">
+        <ng-container ngModelGroup="userInfo">
+            <mat-form-field>
+                <mat-label>Given name</mat-label>
+                <input matInput
+                       type="text"
+                       ngModel
+                       name="givenName"
+                       required />
             </mat-form-field>
-            <mat-form-field class="col-12 col-sm-6">
-                <input
-                    matInput
-                    type="text"
-                    placeholder="Surname"
-                    ngModel
-                    name="surname"
-                    required
-                />
+            <mat-form-field class="@md:col-start-2">
+                <mat-label>Surname</mat-label>
+                <input matInput
+                       type="text"
+                       ngModel
+                       name="surname"
+                       required />
             </mat-form-field>
-            <mat-form-field class="col-12">
-                <input
-                    matInput
-                    type="email"
-                    placeholder="E-Mail"
-                    ngModel
-                    name="email"
-                    required
-                    email
-                />
+            <mat-form-field class="@md:col-span-2">
+                <mat-label>E-Mail</mat-label>
+                <input matInput
+                       type="email"
+                       ngModel
+                       name="email"
+                       required
+                       email />
             </mat-form-field>
-        </div>
+        </ng-container>
 
-        <div class="row">
-            <mat-form-field class="col-12 col-sm-6">
-                <input
-                    matInput
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput
                     type="text"
-                    placeholder="Username"
                     ngModel
                     name="username"
-                    required
-                />
-            </mat-form-field>
-            <mat-form-field class="col-12 col-sm-6">
-                <input
-                    matInput
+                    required />
+        </mat-form-field>
+        <mat-form-field class="@md:col-start-2">
+            <mat-label>Password</mat-label>
+            <input matInput
                     type="password"
-                    placeholder="Password"
                     ngModel
                     name="password"
                     #password="ngModel"
-                    required
-                />
-            </mat-form-field>
-        </div>
+                    required />
+        </mat-form-field>
 
-        <div class="row justify-content-end">
-            <mat-form-field class="col-12 col-sm-6">
-                <input
-                    matInput
+        <mat-form-field class="@md:col-start-2">
+            <mat-label>Repeat Password</mat-label>
+            <input matInput
                     type="password"
-                    placeholder="Repeat Password"
                     ngModel
                     name="passwordRepeat"
                     masch-validateEqual="password"
-                    required
-                />
-            </mat-form-field>
-        </div>
+                    required />
+        </mat-form-field>
 
-        <div class="row justify-content-between">
-            <div class="col-auto my-auto">
+        <div class="@md:col-span-2 flex flex-row">
+            <div class="flex-grow">
                 <mat-error *ngIf="registerFailed">Register failed.</mat-error>
-                <mat-error *ngIf="formInvalid"
-                    >Please fill in all fields correctly.</mat-error
-                >
+                <mat-error *ngIf="formInvalid">Please fill in all fields correctly.</mat-error>
             </div>
-            <div class="col-auto">
-                <button type="submit" mat-raised-button color="primary">
-                    Register
-                </button>
-            </div>
+            <button type="submit"
+                    mat-raised-button
+                    color="primary">
+                Register
+            </button>
         </div>
     </div>
 </form>
