@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TimeSheetEntryFormComponent } from './time-sheet-entry-form.component';
+import { TimeSheetEntryFormComponent } from "./time-sheet-entry-form.component";
 
-describe('TimeSheetEntryFormComponent', () => {
+describe("TimeSheetEntryFormComponent", () => {
     let component: TimeSheetEntryFormComponent;
     let fixture: ComponentFixture<TimeSheetEntryFormComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TimeSheetEntryFormComponent]
+            declarations: [TimeSheetEntryFormComponent],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 
@@ -18,7 +19,7 @@ describe('TimeSheetEntryFormComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

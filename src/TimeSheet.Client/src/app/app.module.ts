@@ -64,14 +64,8 @@ import { CreateEntryDialogComponent } from './components/dialogs/create-entry-di
         InfiniteScrollModule,
         AngularMaterialModule
     ],
-    entryComponents: [
-        DeleteWarningDialogComponent,
-        CreateApiKeyDialogComponent,
-        CopyApiKeyDialogComponent,
-        CreateEntryDialogComponent
-    ],
     providers: [
-        //{provide: LOCALE_ID, useValue: navigator.language}
+    //{provide: LOCALE_ID, useValue: navigator.language}
     ],
     bootstrap: [AppComponent]
 })

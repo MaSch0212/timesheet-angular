@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CopyApiKeyDialogComponent } from './copy-api-key-dialog.component';
+import { CopyApiKeyDialogComponent } from "./copy-api-key-dialog.component";
 
-describe('CopyApiKeyDialogComponent', () => {
+describe("CopyApiKeyDialogComponent", () => {
     let component: CopyApiKeyDialogComponent;
     let fixture: ComponentFixture<CopyApiKeyDialogComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [CopyApiKeyDialogComponent]
+            declarations: [CopyApiKeyDialogComponent],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 
@@ -18,7 +19,7 @@ describe('CopyApiKeyDialogComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

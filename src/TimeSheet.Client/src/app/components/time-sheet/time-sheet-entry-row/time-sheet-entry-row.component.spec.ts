@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TimeSheetEntryRowComponent } from './time-sheet-entry-row.component';
+import { TimeSheetEntryRowComponent } from "./time-sheet-entry-row.component";
 
-describe('TimeSheetEntryRowComponent', () => {
+describe("TimeSheetEntryRowComponent", () => {
     let component: TimeSheetEntryRowComponent;
     let fixture: ComponentFixture<TimeSheetEntryRowComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TimeSheetEntryRowComponent]
+            declarations: [TimeSheetEntryRowComponent],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 
@@ -18,7 +19,7 @@ describe('TimeSheetEntryRowComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CreateApiKeyDialogComponent } from './create-api-key-dialog.component';
+import { CreateApiKeyDialogComponent } from "./create-api-key-dialog.component";
 
-describe('CreateApiKeyDialogComponent', () => {
+describe("CreateApiKeyDialogComponent", () => {
     let component: CreateApiKeyDialogComponent;
     let fixture: ComponentFixture<CreateApiKeyDialogComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [CreateApiKeyDialogComponent]
+            declarations: [CreateApiKeyDialogComponent],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 
@@ -18,7 +19,7 @@ describe('CreateApiKeyDialogComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

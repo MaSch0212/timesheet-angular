@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ErrorPageComponent } from './error-page.component';
+import { ErrorPageComponent } from "./error-page.component";
 
-describe('ErrorPageComponent', () => {
+describe("ErrorPageComponent", () => {
     let component: ErrorPageComponent;
     let fixture: ComponentFixture<ErrorPageComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ErrorPageComponent]
+            declarations: [ErrorPageComponent],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 
@@ -18,7 +19,7 @@ describe('ErrorPageComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });

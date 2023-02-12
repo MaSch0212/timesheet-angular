@@ -1,14 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DeleteWarningDialogComponent } from './delete-warning-dialog.component';
+import { DeleteWarningDialogComponent } from "./delete-warning-dialog.component";
 
-describe('DeleteWarningDialogComponent', () => {
+describe("DeleteWarningDialogComponent", () => {
     let component: DeleteWarningDialogComponent;
     let fixture: ComponentFixture<DeleteWarningDialogComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [DeleteWarningDialogComponent]
+            declarations: [DeleteWarningDialogComponent],
+            teardown: { destroyAfterEach: false },
         }).compileComponents();
     }));
 
@@ -18,7 +19,7 @@ describe('DeleteWarningDialogComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it("should create", () => {
         expect(component).toBeTruthy();
     });
 });
