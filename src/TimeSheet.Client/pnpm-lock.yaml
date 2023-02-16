@@ -17,8 +17,7 @@ specifiers:
   '@angular/router': ^15.1.4
   '@masch212/angular-common': ^0.2.1
   '@masch212/rxjs': ^0.2.0
-  '@mdi/angular-material': ^7.1.96
-  '@mdi/font': ^7.1.96
+  '@mdi/js': ^7.1.96
   '@tailwindcss/container-queries': ^0.1.0
   '@types/node': ^18.13.0
   autoprefixer: ^10.4.13
@@ -31,6 +30,7 @@ specifiers:
   prettier: 2.8.4
   rxjs: 7.8.0
   tailwindcss: ^3.2.6
+  tailwindcss-safe-area: ^0.2.2
   tslib: ^2.5.0
   typescript: ~4.9.5
   zone.js: ~0.12.0
@@ -48,8 +48,7 @@ dependencies:
   '@angular/router': 15.1.4_g7mjdvsmeszabti4mywkhjexwi
   '@masch212/angular-common': 0.2.1_bbb5ets7wzuixkclpc7h4richy
   '@masch212/rxjs': 0.2.0_rxjs@7.8.0+tslib@2.5.0
-  '@mdi/angular-material': 7.1.96
-  '@mdi/font': 7.1.96
+  '@mdi/js': 7.1.96
   '@tailwindcss/container-queries': 0.1.0_tailwindcss@3.2.6
   core-js: 3.27.2
   hammerjs: 2.0.8
@@ -70,6 +69,7 @@ devDependencies:
   postcss: 8.4.21
   prettier: 2.8.4
   tailwindcss: 3.2.6_postcss@8.4.21
+  tailwindcss-safe-area: 0.2.2
   typescript: 4.9.5
 
 packages:
@@ -2680,12 +2680,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@mdi/angular-material/7.1.96:
-    resolution: {integrity: sha512-ZqU3IowLPxVGSm8ga7tTiIjE4jbOYUJzg9XZEGNpoOlFMt9KhVSxA8K7hQp0S7ujCMl+2CfTp0Mauyn4ieJZVA==}
-    dev: false
-
-  /@mdi/font/7.1.96:
-    resolution: {integrity: sha512-Imag6npmfkBDi2Ze2jiZVAPTDIKLxhz2Sx82xJ2zctyAU5LYJejLI5ChnDwiD9bMkQfVuzEsI98Q8toHyC+HCg==}
+  /@mdi/js/7.1.96:
+    resolution: {integrity: sha512-wlrJs6Ryhaa5CqhK3FjTfMRnb/s7HeLkKMFqwQySkK86cdN1TGdzpSM3O4tsmzCA1dYBeTbXvOwSE/Y42cUrvA==}
     dev: false
 
   /@ngtools/webpack/15.1.5_bwpgmn4l5cwxm2akgon73yxmum:
@@ -6593,6 +6589,10 @@ packages:
   /symbol-observable/4.0.0:
     resolution: {integrity: sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==}
     engines: {node: '>=0.10'}
+    dev: true
+
+  /tailwindcss-safe-area/0.2.2:
+    resolution: {integrity: sha512-sygGuEFFBBzjqR6d2gB9hDW9xX/4yLt7ymhR2E/XVa6Ar4B86Net8/9EmPAsqFUvXY40+W0HnXwFavFJEM+eCQ==}
     dev: true
 
   /tailwindcss/3.2.6_postcss@8.4.21:

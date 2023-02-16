@@ -1,0 +1,6 @@
+<div [classList]="'icon-container pos-' + iconPos.toLowerCase() + ' ' + containerClass">
+    <masch-icon [icon]="icon" [classList]="iconClass"></masch-icon>
+    <div class="flex-grow">
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -1,45 +1,37 @@
-<div
-    class="container"
-    infinite-scroll
-    [infiniteScrollDistance]="0.5"
-    [infiniteScrollThrottle]="200"
-    [scrollWindow]="false"
-    [infiniteScrollContainer]="scrollElementSelector$ | async"
-    [fromRoot]="true"
-    (scrolled)="onScroll()"
->
-    <div class="row">
-        <h3 class="col text-center mt-3">Overtime: {{ overtime | hours }}</h3>
-    </div>
-    <div class="row">
-        <mat-accordion class="col mw-700px mx-auto" [hideToggle]="true">
-            <ng-container *ngFor="let group of entries">
-                <div class="month-header mt-3 mb-1">
-                    {{ group.date | date: 'MMMM yyyy' }}
-                </div>
-                <ng-container
-                    *ngFor="let entry of group.entries; let i = index"
-                >
-                    <mat-divider
-                        *ngIf="
-                            i > 0 &&
-                            addSpaceBetween(group.entries[i - 1], entry)
-                        "
-                    ></mat-divider>
-                    <masch-time-sheet-entry-row
-                        [entry]="entry"
-                        [isFirst]="i === 0"
-                        [isLast]="i === group.entries.length - 1"
-                        (save)="onSave(entry, $event, row)"
-                        (delete)="onDelete(entry)"
-                        #row
-                    ></masch-time-sheet-entry-row>
-                </ng-container>
+<div class="@container max-w-4xl flex flex-col mx-auto"
+     infinite-scroll
+     [infiniteScrollDistance]="0.5"
+     [infiniteScrollThrottle]="200"
+     [scrollWindow]="false"
+     [infiniteScrollContainer]="scrollElementSelector$ | async"
+     [fromRoot]="true"
+     (scrolled)="onScroll()">
+    <h3 class="text-center mt-4">Overtime: {{ overtime | hours }}</h3>
+    <mat-accordion [hideToggle]="true" class="px-2 @sm:px-4 @md:px-8">
+        <ng-container *ngFor="let group of entries">
+            <div class="font-light text-lg mt-4 mb-2">
+                {{ group.date | date: 'MMMM yyyy' }}
+            </div>
+            <ng-container *ngFor="let entry of group.entries; let i = index">
+                <mat-divider *ngIf="
+                        i > 0 &&
+                        addSpaceBetween(group.entries[i - 1], entry)
+                    "></mat-divider>
+                <masch-time-sheet-entry-row [entry]="entry"
+                                            [isFirst]="i === 0"
+                                            [isLast]="i === group.entries.length - 1"
+                                            (save)="onSave(entry, $event, row)"
+                                            (delete)="onDelete(entry)"
+                                            #row></masch-time-sheet-entry-row>
             </ng-container>
-        </mat-accordion>
-    </div>
+        </ng-container>
+    </mat-accordion>
 </div>
 
-<button mat-fab color="primary" class="add-button" (click)="onCreateEntry()">
-    <mat-icon svgIcon="plus"></mat-icon>
-</button>
+<div class="fixed right-8 bottom-8">
+    <button mat-fab
+            color="primary"
+            (click)="onCreateEntry()">
+        <mat-icon svgIcon="plus"></mat-icon>
+    </button>
+</div>

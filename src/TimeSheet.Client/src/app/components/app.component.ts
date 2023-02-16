@@ -12,6 +12,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { MenuService } from '../services/menu.service';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { BaseComponent } from '@masch212/angular-common';
+import { Icons } from '../icons';
 
 @Component({
     selector: 'masch-root',
@@ -19,6 +20,8 @@ import { BaseComponent } from '@masch212/angular-common';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends BaseComponent implements OnInit {
+    public Icons = Icons;
+
     @ViewChild('drawer', { static: true }) sidenav: MatSidenav;
     @ViewChild('content', { static: true }) contentElement: ElementRef;
 

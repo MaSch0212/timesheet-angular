@@ -1,74 +1,63 @@
-<mat-sidenav-container class="sidenav-container" fullscreen>
-    <mat-sidenav
-        #drawer
-        class="sidenav"
-        fixedInViewport="true"
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'"
-        [opened]="!(isHandset$ | async) && isLoggedIn"
-    >
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #drawer
+                 fixedInViewport="true"
+                 class="w-56"
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="!(isHandset$ | async) && isLoggedIn">
         <mat-toolbar>
-            <div class="toolbar-content row align-items-center mx-0">
+            <div class="flex flex-row items-center mx-0 pl-safe pr-safe">
                 Menu
             </div>
         </mat-toolbar>
         <mat-nav-list>
-            <a
-                mat-list-item
-                routerLink="/time-sheet"
-                (click)="onMenuItemClicked()"
-            >
-                <mat-icon svgIcon="format-list-bulleted"></mat-icon>
-                <span class="ml-2">Time Sheet</span>
+            <a mat-list-item
+               routerLink="/time-sheet"
+               (click)="onMenuItemClicked()">
+                <masch-icon-presenter [icon]="Icons.formatListBulleted">
+                    <span>Time Sheet</span>
+                </masch-icon-presenter>
             </a>
-            <a
-                mat-list-item
-                routerLink="/settings"
-                (click)="onMenuItemClicked()"
-            >
-                <mat-icon svgIcon="settings"></mat-icon>
-                <span class="ml-2">Settings</span>
+            <a mat-list-item
+               routerLink="/settings"
+               (click)="onMenuItemClicked()">
+                <masch-icon-presenter [icon]="Icons.cog">
+                    <span>Settings</span>
+                </masch-icon-presenter>
             </a>
             <mat-divider></mat-divider>
-            <a mat-list-item routerLink="/logoff" (click)="onMenuItemClicked()">
-                <mat-icon svgIcon="logout"></mat-icon>
-                <span class="ml-2">Logoff</span>
+            <a mat-list-item
+               routerLink="/logoff"
+               (click)="onMenuItemClicked()">
+                <masch-icon-presenter [icon]="Icons.logout">
+                    <span>Logoff</span>
+                </masch-icon-presenter>
             </a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content #content>
-        <mat-toolbar color="primary">
-            <div class="toolbar-content row align-items-center mx-0 w-100">
-                <button
-                    class="col-auto"
-                    type="button"
-                    aria-label="Toggle sidenav"
-                    mat-icon-button
-                    (click)="drawer.toggle()"
-                    *ngIf="(isHandset$ | async) && isLoggedIn"
-                >
-                    <mat-icon
-                        aria-label="Side nav toggle icon"
-                        svgIcon="menu"
-                    ></mat-icon>
+        <mat-toolbar color="primary" class="sticky top-0 z-10">
+            <div class="flex flex-row flex-grow items-center mx-0 w-100 pl-safe pr-safe">
+                <button type="button"
+                        aria-label="Toggle sidenav"
+                        mat-icon-button
+                        (click)="drawer.toggle()"
+                        *ngIf="(isHandset$ | async) && isLoggedIn">
+                    <masch-icon aria-label="Side nav toggle icon"
+                                [icon]="Icons.menu"></masch-icon>
                 </button>
-                <span class="col">Time Sheet</span>
-                <button
-                    class="col-auto"
-                    type="button"
-                    aria-label="Refresh"
-                    mat-icon-button
-                    (click)="onRefreshClicked()"
-                    *ngIf="(isRefreshVisible$ | async)"
-                >
-                    <mat-icon
-                        aria-label="Refresh icon"
-                        svgIcon="refresh"
-                    ></mat-icon>
+                <span class="flex-grow">Time Sheet</span>
+                <button type="button"
+                        aria-label="Refresh"
+                        mat-icon-button
+                        (click)="onRefreshClicked()"
+                        *ngIf="(isRefreshVisible$ | async)">
+                    <masch-icon aria-label="Refresh icon"
+                                [icon]="Icons.refresh"></masch-icon>
                 </button>
             </div>
         </mat-toolbar>
-        <div class="app-content">
+        <div class="pl-safe pr-safe w-full">
             <router-outlet></router-outlet>
         </div>
     </mat-sidenav-content>

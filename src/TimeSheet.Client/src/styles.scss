@@ -21,10 +21,20 @@ $time-sheet-theme: mat.define-dark-theme((
 @include mat.toolbar-theme($time-sheet-theme);
 @include mat.sidenav-theme($time-sheet-theme);
 @include mat.button-theme($time-sheet-theme);
+@include mat.fab-theme($time-sheet-theme);
+@include mat.icon-button-theme($time-sheet-theme);
 @include mat.card-theme($time-sheet-theme);
 @include mat.checkbox-theme($time-sheet-theme);
 @include mat.input-theme($time-sheet-theme);
 @include mat.form-field-theme($time-sheet-theme);
+@include mat.expansion-theme($time-sheet-theme);
+@include mat.divider-theme($time-sheet-theme);
+@include mat.list-theme($time-sheet-theme);
+@include mat.datepicker-theme($time-sheet-theme);
+@include mat.dialog-theme($time-sheet-theme);
+@include mat.snack-bar-theme($time-sheet-theme);
+@include mat.tabs-theme($time-sheet-theme);
+@include mat.progress-spinner-theme($time-sheet-theme);
 
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: .5rem;

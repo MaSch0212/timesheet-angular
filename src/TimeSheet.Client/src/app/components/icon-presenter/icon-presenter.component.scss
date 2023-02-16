@@ -1,0 +1,16 @@
+.icon-container {
+    @apply flex gap-2 items-center;
+
+    &.pos-top {
+        @apply flex-col;
+    }
+    &.pos-bottom  {
+        @apply flex-col-reverse;
+    }
+    &.pos-left {
+        @apply flex-row;
+    }
+    &.pos-right {
+        @apply flex-row-reverse;
+    }
+}

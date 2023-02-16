@@ -29,6 +29,8 @@ import { EqualValidator } from './directives/equal.validator';
 import { ChangePasswordComponent } from './components/settings/change-password/change-password.component';
 import { TimeSheetEntryRowComponent } from './components/time-sheet/time-sheet-entry-row/time-sheet-entry-row.component';
 import { CreateEntryDialogComponent } from './components/dialogs/create-entry-dialog/create-entry-dialog.component';
+import { IconComponent } from './components/icon/icon.component';
+import { IconPresenterComponent } from './components/icon-presenter/icon-presenter.component';
 
 @NgModule({
     declarations: [
@@ -52,7 +54,9 @@ import { CreateEntryDialogComponent } from './components/dialogs/create-entry-di
         GeneralSettingsComponent,
         ChangePasswordComponent,
         TimeSheetEntryRowComponent,
-        CreateEntryDialogComponent
+        CreateEntryDialogComponent,
+        IconComponent,
+        IconPresenterComponent
     ],
     imports: [
         BrowserModule,
