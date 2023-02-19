@@ -5,23 +5,23 @@ import { Helpers } from '../../../common/helpers';
 import { Icons } from '../../../icons';
 
 export interface CopyApiKeyDialogData {
-    key: string;
-    keyInfo: ApiKey;
+  key: string;
+  keyInfo: ApiKey;
 }
 
 @Component({
-    selector: 'masch-copy-api-key-dialog',
-    templateUrl: './copy-api-key-dialog.component.html',
-    styleUrls: ['./copy-api-key-dialog.component.css']
+  selector: 'masch-copy-api-key-dialog',
+  templateUrl: './copy-api-key-dialog.component.html',
+  styleUrls: ['./copy-api-key-dialog.component.css'],
 })
 export class CopyApiKeyDialogComponent implements OnInit {
-    public Icons = Icons;
+  public Icons = Icons;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: CopyApiKeyDialogData) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: CopyApiKeyDialogData) {}
 
-    ngOnInit() {}
+  ngOnInit() {}
 
-    onCopyKey() {
-        Helpers.copyTextToClipboard(this.data.key);
-    }
+  onCopyKey() {
+    Helpers.copyTextToClipboard(this.data.key);
+  }
 }

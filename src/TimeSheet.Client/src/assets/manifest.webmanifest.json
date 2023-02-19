@@ -1,7 +1,7 @@
 {
-    "name": "TimeSheet",
-    "short_name": "TimeSheet",
-    "display": "fullscreen",
-    "scope": "/TimeSheet2/",
-    "start_url": "/TimeSheet2/"
+  "name": "TimeSheet",
+  "short_name": "TimeSheet",
+  "display": "fullscreen",
+  "scope": "/TimeSheet2/",
+  "start_url": "/TimeSheet2/"
 }

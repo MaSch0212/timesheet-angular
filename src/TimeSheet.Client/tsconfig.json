@@ -1,24 +1,24 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "downlevelIteration": true,
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "importHelpers": true,
-        "target": "es2020",
-        "module": "es2020",
-        "typeRoots": ["node_modules/@types"],
-        "lib": ["es2017", "dom"],
-        "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "baseUrl": ".",
-        "paths": {
-            "@masch/common": ["libs/common/src/index.ts"]
-        },
-        "rootDir": "."
+  "compileOnSave": false,
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2020",
+    "module": "es2020",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@masch/common": ["libs/common/src/index.ts"]
     },
-    "exclude": ["node_modules", "tmp"]
+    "rootDir": "."
+  },
+  "exclude": ["node_modules", "tmp"]
 }

@@ -8,44 +8,44 @@ import { ErrorPageComponent } from '../components/error-page/error-page.componen
 import { HomeComponent } from '../components/home/home.component';
 
 const appRoutes: Routes = [
-    {
-        path: '',
-        redirectTo: '/time-sheet',
-        pathMatch: 'full'
-    },
-    {
-        path: 'time-sheet',
-        component: TimeSheetComponent,
-        canActivate: [AuthGuardService]
-    },
-    {
-        path: 'login',
-        component: HomeComponent,
-        canActivate: [AuthGuardService]
-    },
-    {
-        path: 'logoff',
-        component: HomeComponent,
-        canActivate: [AuthGuardService]
-    },
-    {
-        path: 'settings',
-        component: SettingsComponent,
-        canActivate: [AuthGuardService]
-    },
-    {
-        path: 'not-found',
-        component: ErrorPageComponent,
-        data: { message: 'notFound' }
-    },
-    {
-        path: '**',
-        redirectTo: '/not-found'
-    }
+  {
+    path: '',
+    redirectTo: '/time-sheet',
+    pathMatch: 'full',
+  },
+  {
+    path: 'time-sheet',
+    component: TimeSheetComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'login',
+    component: HomeComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'logoff',
+    component: HomeComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'not-found',
+    component: ErrorPageComponent,
+    data: { message: 'notFound' },
+  },
+  {
+    path: '**',
+    redirectTo: '/not-found',
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

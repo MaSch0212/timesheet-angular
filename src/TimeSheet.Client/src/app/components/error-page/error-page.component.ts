@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'masch-error-page',
-    templateUrl: './error-page.component.html',
-    styleUrls: ['./error-page.component.scss']
+  selector: 'masch-error-page',
+  templateUrl: './error-page.component.html',
+  styleUrls: ['./error-page.component.scss'],
 })
 export class ErrorPageComponent implements OnInit {
-    constructor() {}
+  constructor() {}
 
-    ngOnInit() {}
+  ngOnInit() {}
 }

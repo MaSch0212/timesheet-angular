@@ -1,0 +1,5 @@
+**/*.html
+node-modules/
+.angular/
+dist/
+pnpm-lock.yaml

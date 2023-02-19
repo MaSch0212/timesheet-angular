@@ -4,15 +4,17 @@
 $time-sheet-primary: mat.define-palette(mat.$light-blue-palette, 700, 500, 900);
 $time-sheet-accent: mat.define-palette(mat.$blue-grey-palette, A200, A100, A400);
 $time-sheet-warn: mat.define-palette(mat.$deep-orange-palette);
-$time-sheet-theme: mat.define-dark-theme((
+$time-sheet-theme: mat.define-dark-theme(
+  (
     color: (
-        primary: $time-sheet-primary,
-        accent: $time-sheet-accent,
-        warn: $time-sheet-warn,
+      primary: $time-sheet-primary,
+      accent: $time-sheet-accent,
+      warn: $time-sheet-warn,
     ),
     typography: mat.define-typography-config(),
     density: 0,
-));
+  )
+);
 @include mat.core-theme($time-sheet-theme);
 @include mat.toolbar-theme($time-sheet-theme);
 @include mat.sidenav-theme($time-sheet-theme);
@@ -37,22 +39,27 @@ $time-sheet-theme: mat.define-dark-theme((
 @tailwind components;
 @tailwind utilities;
 
-h1, h2, h3, h4, h5, h6 {
-    margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 h1 {
-    font-size: 1.75rem;
+  font-size: 1.75rem;
 }
 
 h2 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .mdc-notched-outline__notch {
-    border-right: 0;
+  border-right: 0;
 }
 
 // @import '@angular/material/theming';

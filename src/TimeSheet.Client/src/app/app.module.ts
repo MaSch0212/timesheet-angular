@@ -1,5 +1,5 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,52 +31,53 @@ import { TimeSheetEntryRowComponent } from './components/time-sheet/time-sheet-e
 import { CreateEntryDialogComponent } from './components/dialogs/create-entry-dialog/create-entry-dialog.component';
 import { IconComponent } from './components/icon/icon.component';
 import { IconPresenterComponent } from './components/icon-presenter/icon-presenter.component';
+import { HttpInterceptorService } from './services/http-interceptor.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LoginComponent,
-        TimeSheetComponent,
-        SettingsComponent,
-        ErrorPageComponent,
-        HomeComponent,
-        RegisterComponent,
-        TimeSheetEntryComponent,
-        HoursPipe,
-        MonthPipe,
-        EqualValidator,
-        TimeSheetEntryFormComponent,
-        DeleteWarningDialogComponent,
-        CreateApiKeyDialogComponent,
-        CopyApiKeyDialogComponent,
-        ApiKeysComponent,
-        UserInfoComponent,
-        GeneralSettingsComponent,
-        ChangePasswordComponent,
-        TimeSheetEntryRowComponent,
-        CreateEntryDialogComponent,
-        IconComponent,
-        IconPresenterComponent
-    ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        InfiniteScrollModule,
-        AngularMaterialModule
-    ],
-    providers: [
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    TimeSheetComponent,
+    SettingsComponent,
+    ErrorPageComponent,
+    HomeComponent,
+    RegisterComponent,
+    TimeSheetEntryComponent,
+    HoursPipe,
+    MonthPipe,
+    EqualValidator,
+    TimeSheetEntryFormComponent,
+    DeleteWarningDialogComponent,
+    CreateApiKeyDialogComponent,
+    CopyApiKeyDialogComponent,
+    ApiKeysComponent,
+    UserInfoComponent,
+    GeneralSettingsComponent,
+    ChangePasswordComponent,
+    TimeSheetEntryRowComponent,
+    CreateEntryDialogComponent,
+    IconComponent,
+    IconPresenterComponent,
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    InfiniteScrollModule,
+    AngularMaterialModule,
+  ],
+  providers: [
     //{provide: LOCALE_ID, useValue: navigator.language}
-    ],
-    bootstrap: [AppComponent]
+    { provide: HTTP_INTERCEPTORS, multi: true, useClass: HttpInterceptorService, deps: [ LocalStorageService ] }
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-    constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
-        matIconRegistry.addSvgIconSet(
-            domSanitizer.bypassSecurityTrustResourceUrl('./assets/mdi.svg')
-        );
-    }
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/mdi.svg'));
+  }
 }

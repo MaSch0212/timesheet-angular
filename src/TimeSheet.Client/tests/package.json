@@ -1,0 +1,25 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "pnpm playwright install",
+    "clean": "pnpm rimraf dist",
+    "prepare-dist": "pnpm cpy ../dist/** ./dist",
+    "start": "pnpm http-server -p 4200 -c-1",
+    "debug:chrome": "playwright test --debug --project chromium",
+    "test": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.30.0",
+    "cpy-cli": "^4.2.0",
+    "http-server": "^14.1.1",
+    "playwright-easy-network-stub": "^4.0.0",
+    "rimraf": "^4.1.2"
+  }
+}

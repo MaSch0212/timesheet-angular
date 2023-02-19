@@ -2,10 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Helpers } from '../common/helpers';
 
 @Pipe({
-    name: 'hours'
+  name: 'hours',
 })
 export class HoursPipe implements PipeTransform {
-    transform(value: number) {
-        return Helpers.getTimeStringFromHours(value);
-    }
+  transform(value: number) {
+    return Helpers.getTimeStringFromHours(value);
+  }
 }

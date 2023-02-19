@@ -2,33 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'masch-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+  selector: 'masch-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-    private redirectTo: string;
+  private redirectTo: string;
 
-    constructor(
-        private router: Router,
-        private activatedRoute: ActivatedRoute
-    ) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
-    ngOnInit() {
-        this.activatedRoute.queryParams.subscribe(params => {
-            this.redirectTo = params['redirectTo'] || '/';
-        });
-    }
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.redirectTo = params['redirectTo'] || '/';
+    });
+  }
 
-    onLogin() {
-        this.navigateBack();
-    }
+  onLogin() {
+    this.navigateBack();
+  }
 
-    onRegister() {
-        this.navigateBack();
-    }
+  onRegister() {
+    this.navigateBack();
+  }
 
-    private navigateBack() {
-        this.router.navigateByUrl(this.redirectTo);
-    }
+  private navigateBack() {
+    this.router.navigateByUrl(this.redirectTo);
+  }
 }

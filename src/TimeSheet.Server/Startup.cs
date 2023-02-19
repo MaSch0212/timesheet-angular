@@ -155,6 +155,15 @@ namespace TimeSheet
             app.UseAuthentication();
             app.UseAuthorization();
 
+            if (env.IsDevelopment())
+            {
+                app.UseCors(o => o
+                    .AllowCredentials()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .SetIsOriginAllowed(s => true));
+            }
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -169,7 +178,7 @@ namespace TimeSheet
 
                 spa.Options.SourcePath = "../TimeSheet.Client";
 
-                if (env.IsDevelopment())
+                if (env.IsDevelopment() && Configuration["nfe"] != "true")
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                 }

@@ -3,33 +3,33 @@ import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
-    selector: 'masch-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss']
+  selector: 'masch-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-    @Output() register = new EventEmitter<void>();
+  @Output() register = new EventEmitter<void>();
 
-    registerFailed = false;
-    formInvalid = false;
+  registerFailed = false;
+  formInvalid = false;
 
-    constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthenticationService) {}
 
-    ngOnInit() {}
+  ngOnInit() {}
 
-    onRegisterSubmit(form: NgForm) {
-        this.formInvalid = form.invalid;
-        if (form.invalid) {
-            this.registerFailed = false;
-            return;
-        }
-
-        this.authService.register(form.value).subscribe(result => {
-            if (result) {
-                this.register.emit();
-            } else {
-                this.registerFailed = true;
-            }
-        });
+  onRegisterSubmit(form: NgForm) {
+    this.formInvalid = form.invalid;
+    if (form.invalid) {
+      this.registerFailed = false;
+      return;
     }
+
+    this.authService.register(form.value).subscribe((result) => {
+      if (result) {
+        this.register.emit();
+      } else {
+        this.registerFailed = true;
+      }
+    });
+  }
 }
