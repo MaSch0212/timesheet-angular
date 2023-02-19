@@ -13,7 +13,7 @@ CREATE TABLE [accounts] (
 );
 
 CREATE TABLE [apikeys] (
-    [id]        INT NOT NULL PRIMARY KEY,
+    [id]        INTEGER NOT NULL PRIMARY KEY,
     [key]       VARCHAR(255) NOT NULL,
     [name]      VARCHAR(255) NOT NULL,
     [userid]    INTEGER NOT NULL,

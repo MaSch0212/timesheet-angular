@@ -1,36 +1,32 @@
-<mat-expansion-panel [class.first]="isFirst" [class.last]="isLast" #panel>
+<mat-expansion-panel [class.first]="isFirst"
+                     [class.last]="isLast"
+                     #panel
+                     class="@container">
     <mat-expansion-panel-header>
-        <masch-time-sheet-entry
-            class="w-100"
-            [entry]="entry"
-        ></masch-time-sheet-entry>
+        <masch-time-sheet-entry class="w-full"
+                                [entry]="entry"></masch-time-sheet-entry>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-        <masch-time-sheet-entry-form
-            [entry]="entry"
-            (save)="save.emit($event)"
-            (delete)="delete.emit()"
-            #form
-        >
-            <mat-action-row actions class="pb-0 pl-0 align-items-center mt-3">
-                <div class="col">
+        <masch-time-sheet-entry-form [entry]="entry"
+                                     (save)="save.emit($event)"
+                                     (delete)="delete.emit()"
+                                     #form>
+            <mat-action-row actions
+                            class="flex flex-row !p-0 !pt-4 items-center mt-4">
+                <button mat-icon-button
+                        matTooltip="Delete entry"
+                        class="!ml-0 mr-2"
+                        color="warn"
+                        (click)="form.onDelete()"
+                        type="button">
+                    <masch-icon [icon]="Icons.delete"></masch-icon>
+                </button>
+                <div class="flex-grow">
                     <mat-error>{{ form.errorMessage }}</mat-error>
                 </div>
-                <button
-                    class="col-auto"
-                    mat-button
-                    color="warn"
-                    (click)="form.onDelete()"
-                    type="button"
-                >
-                    Delete
-                </button>
-                <button
-                    class="col-auto"
-                    mat-button
-                    color="primary"
-                    type="submit"
-                >
+                <button mat-button
+                        color="primary"
+                        type="submit">
                     Save
                 </button>
             </mat-action-row>

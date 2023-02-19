@@ -18,6 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { TimeSheetEntryRowComponent } from './time-sheet-entry-row/time-sheet-entry-row.component';
 import { CreateEntryDialogComponent } from '../dialogs/create-entry-dialog/create-entry-dialog.component';
 import { BaseComponent } from '@masch212/angular-common';
+import { Icons } from '../..//icons';
 
 @Component({
     selector: 'masch-time-sheet',
@@ -28,6 +29,8 @@ export class TimeSheetComponent extends BaseComponent
     implements OnInit, OnDestroy {
     private entriesPerCall: number = 50;
     private loadedEntries: number = 0;
+
+    public Icons = Icons;
 
     scrollElementSelector$: Observable<string> = this.menuService
         .currentScrollContainer$;

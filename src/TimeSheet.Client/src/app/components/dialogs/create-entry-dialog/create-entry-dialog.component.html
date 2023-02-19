@@ -1,29 +1,27 @@
 <h2 mat-dialog-title>Create entry</h2>
 <mat-dialog-content>
-    <div class="mx-auto p-5" *ngIf="!settings">
+    <div class="mx-auto p-8"
+         *ngIf="!settings">
         <mat-spinner></mat-spinner>
     </div>
-    <masch-time-sheet-entry-form
-        (save)="onSave($event)"
-        #form
-        [hidden]="!settings"
-    ></masch-time-sheet-entry-form>
+    <masch-time-sheet-entry-form (save)="onSave($event)"
+                                 #form
+                                 [hidden]="!settings"></masch-time-sheet-entry-form>
 </mat-dialog-content>
-<mat-dialog-actions class="align-items-center">
-    <button
-        class="col-auto"
-        mat-button
-        (click)="form.onSubmit()"
-        color="primary"
-        type="button"
-        [disabled]="!settings"
-    >
+<mat-dialog-actions>
+    <button mat-button
+            (click)="form.onSubmit()"
+            color="primary"
+            type="button"
+            [disabled]="!settings">
         Save
     </button>
-    <button class="col-auto" mat-button [mat-dialog-close]="null" type="button">
+    <button mat-button
+            [mat-dialog-close]="null"
+            type="button">
         Cancel
     </button>
-    <div class="col">
+    <div class="flex-grow">
         <mat-error>{{ form.errorMessage }}</mat-error>
     </div>
 </mat-dialog-actions>

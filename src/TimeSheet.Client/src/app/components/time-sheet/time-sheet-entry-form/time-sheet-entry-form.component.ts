@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Helpers } from '../../../common/helpers';
 import { Break } from '../../../models/break.model';
+import { Icons } from '../../../icons';
 
 @Component({
     selector: 'masch-time-sheet-entry-form',
@@ -17,6 +18,8 @@ import { Break } from '../../../models/break.model';
 })
 export class TimeSheetEntryFormComponent implements OnInit {
     private _entry: TimeSheetEntry;
+
+    public Icons = Icons;
 
     @Output() save = new EventEmitter<TimeSheetEntry>();
     @Output() delete = new EventEmitter();

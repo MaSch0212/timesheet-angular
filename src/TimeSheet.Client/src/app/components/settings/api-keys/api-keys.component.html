@@ -6,36 +6,27 @@
 </p>
 <mat-list>
     <mat-list-item *ngFor="let key of apiKeys; let i = index">
-        <div class="row w-100 align-items-center no-gutters">
-            <div class="col text-truncate">
+        <div class="w-full items-center grid grid-cols-[5fr,4fr,auto]">
+            <div class="truncate">
                 {{ key.name }}
             </div>
-            <div class="col-5 text-truncate">
+            <div class="truncate">
                 {{ key.createdAt | date: 'short' }}
             </div>
-            <div class="col-auto">
-                <button
-                    mat-icon-button
+            <button mat-icon-button
                     color="warn"
-                    (click)="onDeleteApiKey(i)"
-                >
-                    <mat-icon svgIcon="delete"></mat-icon>
-                </button>
-            </div>
+                    (click)="onDeleteApiKey(i)">
+                <masch-icon [icon]="Icons.delete"></masch-icon>
+            </button>
         </div>
         <mat-divider *ngIf="i < apiKeys.length - 1"></mat-divider>
     </mat-list-item>
 </mat-list>
 
-<div class="row justify-content-end mt-2">
-    <div class="col-auto mr-3">
-        <button
-            mat-button
-            mat-raised-button
+<div class="flex flex-row justify-end">
+    <button mat-button
             color="primary"
-            (click)="onGenerateApiKey()"
-        >
-            Create Key
-        </button>
-    </div>
+            (click)="onGenerateApiKey()">
+        Create Key
+    </button>
 </div>

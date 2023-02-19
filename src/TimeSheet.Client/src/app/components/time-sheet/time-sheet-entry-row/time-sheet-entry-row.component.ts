@@ -9,6 +9,7 @@ import {
 import { TimeSheetEntry } from '../../../models/time-sheet-entry.model';
 import { TimeSheetEntryFormComponent } from '../time-sheet-entry-form/time-sheet-entry-form.component';
 import { MatExpansionPanel } from '@angular/material/expansion';
+import { Icons } from '../../../icons';
 
 @Component({
     selector: 'masch-time-sheet-entry-row',
@@ -25,6 +26,8 @@ export class TimeSheetEntryRowComponent implements OnInit {
     @Input() entry: TimeSheetEntry;
     @Input() isFirst: boolean;
     @Input() isLast: boolean;
+
+    public Icons = Icons
 
     constructor() {}
 

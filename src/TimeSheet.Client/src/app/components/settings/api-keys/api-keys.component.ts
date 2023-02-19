@@ -9,6 +9,7 @@ import {
     DeleteWarningDialogComponent,
     DeleteWarningDialogData
 } from '../../dialogs/delete-warning-dialog/delete-warning-dialog.component';
+import { Icons } from '../../../icons';
 
 @Component({
     selector: 'masch-api-keys',
@@ -17,6 +18,8 @@ import {
 })
 export class ApiKeysComponent implements OnInit {
     @Input() apiKeys: ApiKey[];
+
+    public Icons = Icons;
 
     constructor(
         private dialog: MatDialog,

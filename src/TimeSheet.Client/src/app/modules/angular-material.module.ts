@@ -9,6 +9,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {
     MatProgressSpinner,
     MatProgressSpinnerModule
@@ -22,6 +23,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
     imports: [
@@ -41,7 +43,8 @@ import { LayoutModule } from '@angular/cdk/layout';
         MatDialogModule,
         MatSnackBarModule,
         MatTabsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatTooltipModule,
     ],
     exports: [
         MatButtonModule,
@@ -60,10 +63,12 @@ import { LayoutModule } from '@angular/cdk/layout';
         MatDialogModule,
         MatSnackBarModule,
         MatTabsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatTooltipModule,
     ],
     providers: [
-        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
+        { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } }
     ]
 })
 export class AngularMaterialModule {}

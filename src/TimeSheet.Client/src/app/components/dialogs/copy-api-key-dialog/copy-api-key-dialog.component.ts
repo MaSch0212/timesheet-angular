@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ApiKey } from '../../../models/apikey.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Helpers } from '../../../common/helpers';
+import { Icons } from '../../../icons';
 
 export interface CopyApiKeyDialogData {
     key: string;
@@ -14,6 +15,8 @@ export interface CopyApiKeyDialogData {
     styleUrls: ['./copy-api-key-dialog.component.css']
 })
 export class CopyApiKeyDialogComponent implements OnInit {
+    public Icons = Icons;
+
     constructor(@Inject(MAT_DIALOG_DATA) public data: CopyApiKeyDialogData) {}
 
     ngOnInit() {}

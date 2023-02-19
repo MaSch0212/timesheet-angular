@@ -1,50 +1,40 @@
-<div class="container mb-3">
-    <div
-        class="row mt-5 mb-5 justify-content-center"
-        *ngIf="!settings || !userInfo"
-    >
-        <div class="col-auto">
-            <mat-spinner></mat-spinner>
-        </div>
-    </div>
-    <div class="row" *ngIf="settings && userInfo">
-        <div class="col-12 mt-3">
-            <mat-card appearance="outlined">
+<div class="@container max-w-4xl flex flex-col mx-auto">
+    <mat-spinner class="mt-8 mb-8 mx-auto"
+                 *ngIf="!settings || !userInfo">
+    </mat-spinner>
+    <div class="p-4 flex flex-col gap-4"
+         *ngIf="settings && userInfo">
+        <mat-card>
+            <mat-card-header>
                 <mat-card-title>General Settings</mat-card-title>
-                <mat-card-content>
-                    <masch-general-settings
-                        [settings]="settings"
-                    ></masch-general-settings>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="col-12 mt-3">
-            <mat-card appearance="outlined">
+            </mat-card-header>
+            <mat-card-content>
+                <masch-general-settings [settings]="settings"></masch-general-settings>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
                 <mat-card-title>User Info</mat-card-title>
-                <mat-card-content>
-                    <masch-user-info [userInfo]="userInfo"></masch-user-info>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="col-12 mt-3">
-            <mat-card appearance="outlined">
+            </mat-card-header>
+            <mat-card-content>
+                <masch-user-info [userInfo]="userInfo"></masch-user-info>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
                 <mat-card-title>Change Password</mat-card-title>
-                <mat-card-content>
-                    <masch-change-password
-                        [userId]="userInfo.id"
-                    ></masch-change-password>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="col-12 mt-3">
-            <mat-card appearance="outlined">
+            </mat-card-header>
+            <mat-card-content>
+                <masch-change-password [userId]="userInfo.id"></masch-change-password>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-header>
                 <mat-card-title>API Keys</mat-card-title>
-                <mat-card-content>
-                    <masch-api-keys
-                        [apiKeys]="settings.apiKeys"
-                    ></masch-api-keys>
-                </mat-card-content>
-            </mat-card>
-        </div>
+            </mat-card-header>
+            <mat-card-content>
+                <masch-api-keys [apiKeys]="settings.apiKeys"></masch-api-keys>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
