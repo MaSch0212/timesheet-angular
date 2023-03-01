@@ -13,7 +13,7 @@ export class LoginView {
   public readonly loginFailedError: Locator;
   public readonly missingFieldsError: Locator;
 
-  constructor(private readonly page: Page) {
+  constructor(page: Page) {
     this.locator = page.locator('masch-login');
 
     this.username = new MatInputControl(this.locator.locator('#username'));

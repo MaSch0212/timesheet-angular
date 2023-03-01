@@ -44,7 +44,17 @@ export class AuthenticationService {
   }
 
   public register(request: { username: string; password: string; userInfo: User }): Observable<boolean> {
-    return this.pipeLoginResponse(this.httpClient.post<LoginResponse>('api/auth/register', request));
+    return this.pipeLoginResponse(
+      this.httpClient.post<LoginResponse>('api/auth/register', {
+        username: request.username,
+        password: request.password,
+        userInfo: <User>{
+          givenName: request.userInfo.givenName,
+          surname: request.userInfo.surname,
+          email: request.userInfo.email,
+        },
+      })
+    );
   }
 
   public changePassword(request: { userId: number; oldPassword: string; newPassword: string }): Observable<Object> {
